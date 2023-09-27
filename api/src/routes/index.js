@@ -1,3 +1,4 @@
+const axios = require("axios");
 const { Router } = require('express');
 const getPokemonById = require("../controllers/getPokemonById")
 const getPokemonByName = require("../controllers/getPokemonByName")
@@ -9,8 +10,10 @@ const { Pokemon } = require('../db');
 const router = Router();
 router.get('/pokemons', async (req, res) => {
     try {
-      const pokemons = await Pokemon.findAll();
-  
+      const response = await axios.get(
+        "https://pokeapi.co/api/v2/pokemon?limit=20"
+      );
+      const pokemons = response.data.results;
       res.status(200).json(pokemons);
     } catch (error) {
       res.status(500).json({ message: error.message });
