@@ -1,5 +1,6 @@
 const axios = require("axios");
 const { Router } = require('express');
+const getTypes = require("../controllers/getTypes")
 const getPokemonById = require("../controllers/getPokemonById")
 const getPokemonByName = require("../controllers/getPokemonByName")
 const postPokemon = require('../controllers/postPokemon')
@@ -10,10 +11,10 @@ const { Pokemon } = require('../db');
 
 const router = Router();
 
-router.get('/pokemon', async (req, res) => {
+router.get('/pokemons', async (req, res) => {
     try {
       const response = await axios.get(
-        "https://pokeapi.co/api/v2/pokemon?limit=20"
+        "https://pokeapi.co/api/v2/pokemon?limit=30"
       );
       const pokemon = response.data.results;
       res.status(200).json(pokemon);
@@ -25,7 +26,8 @@ router.get('/pokemon', async (req, res) => {
   
   router.get('/pokemon/:id', getPokemonById);
   router.get('/pokemon', getPokemonByName);
-  router.post('/pokemon',postPokemon)
+  router.get('/types', getTypes);
+  router.post('/pokemon',postPokemon);
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
