@@ -1,4 +1,5 @@
 const axios = require("axios");
+const { Pokemon } = require("../db");
 
 async function getPokemonById(req, res) {
   const URL = "https://pokeapi.co/api/v2/pokemon/";
@@ -22,7 +23,7 @@ async function getPokemonById(req, res) {
     } else {
      
       const dbPokemon = await Pokemon.findOne({
-        where: { nombre: id.toLowerCase() },
+        where: { name: id.toLowerCase() },
       });
 
       if (dbPokemon) {
