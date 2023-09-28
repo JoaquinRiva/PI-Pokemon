@@ -12,17 +12,31 @@ const { Pokemon } = require('../db');
 const router = Router();
 
 router.get('/pokemons', async (req, res) => {
-    try {
-      const response = await axios.get(
-        "https://pokeapi.co/api/v2/pokemon?limit=30"
-      );
-      const pokemon = response.data.results;
-      res.status(200).json(pokemon);
-    } catch (error) {
-      res.status(500).json({ message: error.message });
-    }
-  });
+  try {
+    const url = "https://pokeapi.co/api/v2/pokemon?limit=30";
+    const response = await axios.get(url);
+    const pokemonData = response.data.results;
 
+    const pokemons = await Promise.all(
+      pokemonData.map(async (pokemon) => {
+        const pokemonResponse = await axios.get(pokemon.url);
+        const data = pokemonResponse.data;
+        return {
+          id: data.id,
+          name: data.name,
+          image: data.sprites.front_default,
+          hp: data.stats.find((stat) => stat.stat.name === "hp").base_stat,
+          attack: data.stats.find((stat) => stat.stat.name === "attack").base_stat,
+          defense: data.stats.find((stat) => stat.stat.name === "defense").base_stat,
+        };
+      })
+    );
+
+    res.status(200).json(pokemons);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
   
   router.get('/pokemon/:id', getPokemonById);
   router.get('/pokemon', getPokemonByName);
