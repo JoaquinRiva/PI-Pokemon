@@ -1,8 +1,9 @@
-import Detail from './components/Detail';
-import Form from './components/Form';
-import Home from './components/Home';
-import Landing from './components/Landing';
+import Detail from './views/Detail';
+import Form from './views/Form';
+import Home from './views/Home';
+import Landing from './views/Landing';
 import {Routes, Route} from "react-router-dom";
+import "./index.css"
 
 function App() {
 
