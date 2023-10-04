@@ -1,4 +1,5 @@
 import { useState } from "react"
+import "../components/Paginacion.css"
 
 export const Paginacion = ({pagina, setPagina, maximo}) => {
     const [input, setInput] = useState(1)
@@ -35,7 +36,7 @@ export const Paginacion = ({pagina, setPagina, maximo}) => {
       };
 
     return(
-        <div>
+        <div className="divContenedor">
             <button disabled={pagina === 1 || pagina < 1} onClick={prevPage}>
             <svg width="50px" height="50px" viewBox="-3 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="icomoon-ignore">
@@ -46,12 +47,13 @@ export const Paginacion = ({pagina, setPagina, maximo}) => {
 </path>
 </svg>
             </button>
-            <input 
+            <input
+            className="input"
             onChange={e => onChange (e)}
             onKeyDown={e => onKeyDown (e)} 
             name="page" autoComplete="off" 
             value={input} />
-            <p>de {Math.ceil(maximo)}</p>
+            <p className="parrafo">Paginas de tu Pokedex⭕: {Math.ceil(maximo)}</p>
             
             <button disabled={pagina === Math.ceil (maximo) || pagina > Math.ceil (maximo)} onClick={nextPage}>
             <svg width="50px" height="50px" viewBox="-3 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

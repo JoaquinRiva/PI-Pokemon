@@ -1,5 +1,5 @@
 import pokegif from "../assets/pokemon.gif"
-import "../views/Landing.modules.css"
+import "../views/Landing.css"
 import { Link } from "react-router-dom";
 
 
