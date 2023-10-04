@@ -2,8 +2,7 @@ import { GET_POKEMON_BY_NAME, GET_POKEMONS } from "./actions-types";
 
 const initialState = {
     pokemons: [],
-    allPokemons: [],
-    allTypes: []
+    allPokemons: []
 }
 
 const reducer = (state = initialState, action)=>{

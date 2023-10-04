@@ -24,6 +24,7 @@ router.get('/pokemons', async (req, res) => {
         return {
           id: data.id,
           name: data.name,
+          type: data.types[0].type.name,
           image: data.sprites.front_default,
           hp: data.stats.find((stat) => stat.stat.name === "hp").base_stat,
           attack: data.stats.find((stat) => stat.stat.name === "attack").base_stat,
