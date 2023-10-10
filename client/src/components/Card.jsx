@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
+import "./Card.css"
 
 
 function Card({id, image, name, type, attack, defense, hp}) {
     return(
-        <div key={id}>
-            <div>
+        <div className="cardContenedor" key={id}>
+            <div >
                 <img src={image} alt={name} />
             </div>
             <h2>NAME: {name}</h2>

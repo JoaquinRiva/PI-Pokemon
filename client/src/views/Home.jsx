@@ -1,9 +1,11 @@
 import Card from "../components/Card";
 import SearchBar from "../components/SearchBar";
+import Header from "../components/Header";
 import { getPokemons, getTypes } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react";
 import { Paginacion } from "../components/Paginacion";
+import "./Home.css"
 
 
 function Home() {
@@ -15,12 +17,13 @@ function Home() {
 
   useEffect(()=>{
     dispatch(getPokemons())
-    dispatch(getTypes())
+    
   },[])
 
 
   return(
-    <div>
+    <div className="div">
+      <Header />
       <SearchBar />
       {
       pokemons

@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import validacionForm from "../components/validacionForm";
 
 function Form() {
-    
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({

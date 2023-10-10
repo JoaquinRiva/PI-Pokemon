@@ -1,30 +1,57 @@
 const axios = require("axios");
+const URL = "https://pokeapi.co/api/v2/type";
 const { Type } = require("../db")
 
-async function getTypes(req, res){
-    const URL = "https://pokeapi.co/api/v2/type";
+async function getTypes(req, res) {
     try {
-    const response = await axios.get(URL);
-    const typeData = response.data.results;
+       
+        const isEmpty = await Type.count() === 0;
 
-    const typeNames = typeData.map(type => type.name);
+        if (isEmpty) {
+        
+            const response = await axios(URL);
+            const data = response.data;
 
-    for (const typeName of typeNames) {
-      const existingType = await Type.findOne({
-        where: { name: typeName }
-      });
+            const pokemonTypes = [];
+            data.results.forEach(pokemonType => {
+                pokemonTypes.push(pokemonType.name);
+            });
 
-      if (!existingType) {
-        await Type.create({ name: typeName });
-      }
+           
+            await savePokemonTypesToDatabase(Object.values(pokemonTypes));
+        }
+
+       
+        const typesFromDatabase = await Type.findAll({
+            attributes: ['name'],
+            // raw: true, 
+        });
+
+        
+        const typesObject = [];
+        typesFromDatabase.forEach(type => {
+            typesObject.push(type.name);
+        });
+
+        res.status(200).json(typesObject);
+    } catch (error) {
+        res.status(500).json({ error: "error", details: error.message });
     }
-
-    const typesDb = await Type.findAll();
-
-    res.status(200).json(typesDb);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
 }
 
-module.exports = getTypes;
+async function savePokemonTypesToDatabase(types) {
+    try {
+        for (const type of types) {
+            await Type.create({ name: type });
+        }
+        console.log('Tipo guardado!');
+    } catch (error) {
+        console.error('Error al guardar tipo', error);
+    }
+}
+
+
+
+
+
+module.exports = getTypes
