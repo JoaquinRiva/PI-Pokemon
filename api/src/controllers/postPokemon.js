@@ -14,6 +14,7 @@ async function postPokemon(req, res) {
       hp,
       attack,
       defense,
+      types
       
     });
 

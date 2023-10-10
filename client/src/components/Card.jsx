@@ -13,7 +13,9 @@ function Card({id, image, name, type, attack, defense, hp}) {
             <p>attack: {attack}</p>
             <p>defense: {defense}</p>
             <p>HP: {hp}</p>
-            
+            <Link to={`/detail/${id}`}>
+            <button>Details of {name}</button>
+            </Link>
         </div>
     )
 }

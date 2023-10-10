@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { Pokemon } = require("../db");
+const { Pokemon, Type} = require("../db");
 
 async function getPokemonById(req, res) {
   const URL = "https://pokeapi.co/api/v2/pokemon/";
@@ -23,19 +23,19 @@ async function getPokemonById(req, res) {
       res.status(200).json(pokemon);
     } else {
      
-      const dbPokemon = await Pokemon.findOne({
-        where: { name: id.toLowerCase() },
-      });
+      const result = await getPokemonFromDatabase(id)
+      res.status(200).json(result)
+    };
 
-      if (dbPokemon) {
-        res.status(200).json(dbPokemon);
-      } else {
-        res.status(404).json({ message: error.message });
-      }
-    }
+      
+  
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
+}
+  async function getPokemonFromDatabase(id){
+    const searchDb = await Pokemon.findByPk(id)
+    return searchDb
 }
 
 module.exports = getPokemonById;
