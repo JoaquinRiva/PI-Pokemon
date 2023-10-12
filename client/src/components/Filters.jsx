@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { orderCards, orderByType, filterAlphabetically, resetFilter } from "../redux/actions"
 import { useState } from "react"
 import {getTypes} from "../redux/actions"
+import "./SearchBar.css"
+
 
 const Filters = ()=>{
     const dispatch = useDispatch();
@@ -55,7 +57,7 @@ const Filters = ()=>{
             <option value="attack">attack</option>
         </select>
 
-        <button onClick={handleResetFilter}>reset filters</button>
+        <button className="boton" onClick={handleResetFilter}>reset filters</button>
         
         </div>
        

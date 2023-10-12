@@ -1,7 +1,22 @@
 .cardContenedor {
     border: 2px solid black;
-    padding: 15px;
+    padding: 8px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 17rem;
+}
+
+.card {
+    height: 24rem;
+    width: 14rem;
+    background-color: #ffff00;
+}
+
+.boton{
+    background-color: rgb(249, 48, 48);
+    border: 2px solid black;
 }

@@ -1,8 +1,14 @@
 
+
 .gif {
     width:100%;
     height:auto;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.tittle {
+    padding-bottom: 1rem;
+    border-bottom: 2px solid black;
 }

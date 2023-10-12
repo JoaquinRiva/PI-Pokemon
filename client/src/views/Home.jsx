@@ -1,7 +1,6 @@
 import Card from "../components/Card";
-import SearchBar from "../components/SearchBar";
-import Header from "../components/Header";
-import { getPokemons, getTypes } from "../redux/actions";
+import NavBar from "../components/NavBar";
+import { getPokemons } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react";
 import { Paginacion } from "../components/Paginacion";
@@ -22,9 +21,9 @@ function Home() {
 
 
   return(
-    <div className="div">
-      <Header />
-      <SearchBar />
+    <div>
+      <NavBar />
+    <div className="div">    
       {
       pokemons
       .slice((pagina - 1) * porPagina, (pagina - 1) * porPagina + porPagina)
@@ -45,6 +44,7 @@ function Home() {
           }
     <Paginacion pagina={pagina} setPagina={setPagina} maximo={maximo}/>
     </div>
+ </div>
   )
 }  
 

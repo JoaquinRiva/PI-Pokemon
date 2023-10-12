@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 
 function Landing() {
     return(
-        <div>
-            <h1>Soy el landing</h1>
+        <div className="">
+            <h1 className="tittle">Pokedex</h1>
         <img className="gif" src={pokegif} alt="Pokegif"/>
         <Link to="/home">HomePage</Link>
         

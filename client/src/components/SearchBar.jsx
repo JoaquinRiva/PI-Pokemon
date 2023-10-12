@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {useDispatch} from "react-redux";
 import { getPokemonByName } from "../redux/actions";
+import "./SearchBar.css"
 
 export default function SearchBar() {
     const [name, setName] = useState("");
@@ -18,7 +19,7 @@ export default function SearchBar() {
             placeholder="Buscar Pokemon" 
             />
             <div>
-              <button onClick={handleSearch}>Buscar</button>  
+              <button className="boton" onClick={handleSearch}>Buscar</button>  
             </div>
             
                 

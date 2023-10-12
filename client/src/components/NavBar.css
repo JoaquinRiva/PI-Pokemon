@@ -1,0 +1,28 @@
+.nav {
+    background-image: url(../assets/depositphotos_120226298-stock-illustration-pokemon-go-pokeball-seamless-texture.jpg);
+    background-repeat: repeat;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-left: 5%;
+    padding-right: 5%;
+    
+    border: 2px solid black;
+    height: 12rem;
+    width: auto;
+}
+
+.ul {
+    display: inline-flex;
+    justify-content: space-between;
+    padding: 0;
+    list-style: none;
+    flex: auto;
+}
+  .boton{
+        background-color: rgb(249, 48, 48);
+        border: 2px solid black;
+    }
+
+
